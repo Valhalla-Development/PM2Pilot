@@ -49,11 +49,11 @@
                     </div>
                     <!-- Third Party Authentication Options -->
                     <div id="third-party-auth" class="flex items-center justify-center mt-5 flex-wrap">
-                        <button type="button" class="hover:scale-125 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1">
-                            <img class="max-w-[25px]" src="https://ucarecdn.com/95eebb9c-85cf-4d12-942f-3c40d7044dc6/" alt="Discord" />
+                        <button type="button" aria-label="Sign in with Discord" class="w-10 h-10 flex items-center justify-center hover:scale-125 ease-in-out duration-300 shadow-lg rounded-lg m-1">
+                            <img src="https://www.svgrepo.com/show/353655/discord-icon.svg" alt="Discord" class="w-7.5 h-7.5" />
                         </button>
-                        <button type="button" class="hover:scale-125 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1">
-                            <img class="max-w-[25px] filter dark:invert" src="https://ucarecdn.com/be5b0ffd-85e8-4639-83a6-5162dfa15a16/" alt="Github" />
+                        <button type="button" aria-label="Sign in with GitHub" class="w-10 h-10 flex items-center justify-center hover:scale-125 ease-in-out duration-300 shadow-lg rounded-lg m-1">
+                            <img src="https://www.svgrepo.com/show/512317/github-142.svg" alt="GitHub" class="w-6 h-6 dark:invert" />
                         </button>
                     </div>
                 </div>
