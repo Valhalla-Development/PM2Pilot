@@ -3,7 +3,7 @@ import { onMount } from 'svelte';
 
 let isDarkTheme = false;
 
-function toggleTheme() {
+function _toggleTheme() {
     isDarkTheme = !isDarkTheme;
     document.body.classList.toggle('dark-theme', isDarkTheme);
     localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
@@ -20,7 +20,7 @@ onMount(() => {
 
 <button 
   class="theme-toggle" 
-  on:click={toggleTheme}
+  on:click={_toggleTheme}
   aria-label={isDarkTheme ? "Switch to light mode" : "Switch to dark mode"}
 >
   <svg class="moon-icon" viewBox="0 0 20 20" fill="currentColor">
