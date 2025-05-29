@@ -1,17 +1,13 @@
 import { Hono } from 'hono';
 import { logger } from 'hono/logger';
 import { PM2Service } from './server/pm2';
+import { pm2Client } from './server/pm2Client';
 
 // Create Hono app
 const app = new Hono();
 
 // Middleware
 app.use('*', logger());
-
-// Health check
-app.get('/health', (c) => {
-    return c.json({ status: 'ok' });
-});
 
 // PM2 routes
 app.get('/list', async (c) => {
@@ -168,6 +164,28 @@ app.post('/start/:id', async (c) => {
 
 // Create the API router
 const router = new Hono();
+
+// Health check at root API level
+router.get('/health', async (c) => {
+    try {
+        const pm2Connected = pm2Client.isConnected();
+        return c.json({
+            status: 'ok',
+            services: {
+                pm2: {
+                    connected: pm2Connected
+                }
+            }
+        });
+    } catch (error) {
+        return c.json({
+            status: 'error',
+            error: 'Health check failed',
+            details: error instanceof Error ? error.message : undefined
+        }, 500);
+    }
+});
+
 router.route('/pm2', app);
 
 // Export the API
