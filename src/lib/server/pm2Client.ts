@@ -14,7 +14,7 @@ class PM2Client {
                     reject(err);
                     return;
                 }
-                
+
                 console.log('Connected to PM2, verifying connection...');
                 pm2.list((err, list) => {
                     if (err) {
@@ -119,4 +119,4 @@ class PM2Client {
 }
 
 // Export an instance
-export const pm2Client = new PM2Client(); 
+export const pm2Client = new PM2Client();

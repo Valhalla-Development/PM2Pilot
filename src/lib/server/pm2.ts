@@ -3,15 +3,15 @@ import { pm2Client } from './pm2Client';
 
 export class PM2Service {
     async listProcesses(): Promise<ProcessDescription[]> {
-        return pm2Client.getProcesses();
+        return await pm2Client.getProcesses();
     }
 
     async describeProcess(id: number): Promise<ProcessDescription> {
-        return pm2Client.describeProcess(id);
+        return await pm2Client.describeProcess(id);
     }
 
     async restartProcess(id: number): Promise<void> {
-        return pm2Client.restartProcess(id);
+        return await pm2Client.restartProcess(id);
     }
 
     async stopProcess(id: number): Promise<void> {
@@ -31,4 +31,4 @@ export class PM2Service {
         }
         return pm2Client.startProcess(id.toString());
     }
-} 
+}

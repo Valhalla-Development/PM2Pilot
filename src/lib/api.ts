@@ -17,7 +17,7 @@ app.get('/list', async (c) => {
         return c.json({
             success: true,
             message: `Found ${processes.length} processes`,
-            processes: processes.map(process => ({
+            processes: processes.map((process) => ({
                 pid: process.pid,
                 name: process.name,
                 pm_id: process.pm_id,
@@ -25,15 +25,18 @@ app.get('/list', async (c) => {
                 pm_uptime: process.pm2_env?.pm_uptime,
                 restart_time: process.pm2_env?.restart_time,
                 unstable_restarts: process.pm2_env?.unstable_restarts,
-                monit: process.monit
-            }))
+                monit: process.monit,
+            })),
         });
     } catch (error) {
-        return c.json({
-            success: false,
-            error: 'Failed to list processes',
-            details: error instanceof Error ? error.message : undefined
-        }, 500);
+        return c.json(
+            {
+                success: false,
+                error: 'Failed to list processes',
+                details: error instanceof Error ? error.message : undefined,
+            },
+            500
+        );
     }
 });
 
@@ -42,7 +45,7 @@ app.get('/describe/:id', async (c) => {
         const id = Number.parseInt(c.req.param('id'));
         const pm2Service = new PM2Service();
         const process = await pm2Service.describeProcess(id);
-        
+
         return c.json({
             success: true,
             message: 'Process details fetched successfully',
@@ -54,15 +57,18 @@ app.get('/describe/:id', async (c) => {
                 pm_uptime: process.pm2_env?.pm_uptime,
                 restart_time: process.pm2_env?.restart_time,
                 unstable_restarts: process.pm2_env?.unstable_restarts,
-                monit: process.monit
-            }
+                monit: process.monit,
+            },
         });
     } catch (error) {
-        return c.json({
-            success: false,
-            error: 'Failed to get process details',
-            details: error instanceof Error ? error.message : undefined
-        }, 500);
+        return c.json(
+            {
+                success: false,
+                error: 'Failed to get process details',
+                details: error instanceof Error ? error.message : undefined,
+            },
+            500
+        );
     }
 });
 
@@ -71,10 +77,10 @@ app.post('/restart/:id', async (c) => {
         const id = Number.parseInt(c.req.param('id'));
         const pm2Service = new PM2Service();
         await pm2Service.restartProcess(id);
-        
+
         // Get updated process info
         const process = await pm2Service.describeProcess(id);
-        
+
         return c.json({
             success: true,
             message: 'Process restarted successfully',
@@ -86,15 +92,18 @@ app.post('/restart/:id', async (c) => {
                 pm_uptime: process.pm2_env?.pm_uptime,
                 restart_time: process.pm2_env?.restart_time,
                 unstable_restarts: process.pm2_env?.unstable_restarts,
-                monit: process.monit
-            }
+                monit: process.monit,
+            },
         });
     } catch (error) {
-        return c.json({
-            success: false,
-            error: 'Failed to restart process',
-            details: error instanceof Error ? error.message : undefined
-        }, 500);
+        return c.json(
+            {
+                success: false,
+                error: 'Failed to restart process',
+                details: error instanceof Error ? error.message : undefined,
+            },
+            500
+        );
     }
 });
 
@@ -103,10 +112,10 @@ app.post('/stop/:id', async (c) => {
         const id = Number.parseInt(c.req.param('id'));
         const pm2Service = new PM2Service();
         await pm2Service.stopProcess(id);
-        
+
         // Get updated process info
         const process = await pm2Service.describeProcess(id);
-        
+
         return c.json({
             success: true,
             message: 'Process stopped successfully',
@@ -118,15 +127,18 @@ app.post('/stop/:id', async (c) => {
                 pm_uptime: process.pm2_env?.pm_uptime,
                 restart_time: process.pm2_env?.restart_time,
                 unstable_restarts: process.pm2_env?.unstable_restarts,
-                monit: process.monit
-            }
+                monit: process.monit,
+            },
         });
     } catch (error) {
-        return c.json({
-            success: false,
-            error: 'Failed to stop process',
-            details: error instanceof Error ? error.message : undefined
-        }, 500);
+        return c.json(
+            {
+                success: false,
+                error: 'Failed to stop process',
+                details: error instanceof Error ? error.message : undefined,
+            },
+            500
+        );
     }
 });
 
@@ -135,10 +147,10 @@ app.post('/start/:id', async (c) => {
         const id = Number.parseInt(c.req.param('id'));
         const pm2Service = new PM2Service();
         await pm2Service.startProcess(id);
-        
+
         // Get updated process info
         const process = await pm2Service.describeProcess(id);
-        
+
         return c.json({
             success: true,
             message: 'Process started successfully',
@@ -150,15 +162,18 @@ app.post('/start/:id', async (c) => {
                 pm_uptime: process.pm2_env?.pm_uptime,
                 restart_time: process.pm2_env?.restart_time,
                 unstable_restarts: process.pm2_env?.unstable_restarts,
-                monit: process.monit
-            }
+                monit: process.monit,
+            },
         });
     } catch (error) {
-        return c.json({
-            success: false,
-            error: 'Failed to start process',
-            details: error instanceof Error ? error.message : undefined
-        }, 500);
+        return c.json(
+            {
+                success: false,
+                error: 'Failed to start process',
+                details: error instanceof Error ? error.message : undefined,
+            },
+            500
+        );
     }
 });
 
@@ -166,23 +181,26 @@ app.post('/start/:id', async (c) => {
 const router = new Hono();
 
 // Health check at root API level
-router.get('/health', async (c) => {
+router.get('/health', (c) => {
     try {
         const pm2Connected = pm2Client.isConnected();
         return c.json({
             status: 'ok',
             services: {
                 pm2: {
-                    connected: pm2Connected
-                }
-            }
+                    connected: pm2Connected,
+                },
+            },
         });
     } catch (error) {
-        return c.json({
-            status: 'error',
-            error: 'Health check failed',
-            details: error instanceof Error ? error.message : undefined
-        }, 500);
+        return c.json(
+            {
+                status: 'error',
+                error: 'Health check failed',
+                details: error instanceof Error ? error.message : undefined,
+            },
+            500
+        );
     }
 });
 

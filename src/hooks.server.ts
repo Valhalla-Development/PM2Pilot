@@ -6,4 +6,4 @@ await pm2Client.connect();
 
 export const handle: Handle = async ({ event, resolve }) => {
     return await resolve(event);
-}; 
+};
