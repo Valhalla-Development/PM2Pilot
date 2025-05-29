@@ -102,6 +102,38 @@ app.post('/restart/:id', async (c) => {
     }
 });
 
+app.post('/stop/:id', async (c) => {
+    try {
+        const id = Number.parseInt(c.req.param('id'));
+        const pm2Service = new PM2Service();
+        await pm2Service.stopProcess(id);
+        
+        // Get updated process info
+        const process = await pm2Service.describeProcess(id);
+        
+        return c.json({
+            success: true,
+            message: 'Process stopped successfully',
+            process: {
+                pid: process.pid,
+                name: process.name,
+                pm_id: process.pm_id,
+                status: process.pm2_env?.status,
+                pm_uptime: process.pm2_env?.pm_uptime,
+                restart_time: process.pm2_env?.restart_time,
+                unstable_restarts: process.pm2_env?.unstable_restarts,
+                monit: process.monit
+            }
+        });
+    } catch (error) {
+        return c.json({
+            success: false,
+            error: 'Failed to stop process',
+            details: error instanceof Error ? error.message : undefined
+        }, 500);
+    }
+});
+
 // Create the API router
 const router = new Hono();
 router.route('/pm2', app);
