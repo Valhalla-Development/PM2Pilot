@@ -1,0 +1,35 @@
+# ========================
+# System generated files
+# ========================
+
+# macOS generated files
+.DS_Store
+
+# ========================
+# IDEs and editors
+# ========================
+
+# JetBrains IDEs (e.g., WebStorm, IntelliJ)
+.idea/
+.vscode/
+
+# ========================
+# Dependency management
+# ========================
+
+node_modules/
+bun.lock
+
+# ========================
+# SvelteKit
+# ========================
+
+# SvelteKit build output
+.svelte-kit/
+build/
+package/
+
+# Environment variables
+.env
+.env.*
+!.env.example

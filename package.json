@@ -1,0 +1,41 @@
+{
+	"name": "pm2pilot",
+	"version": "0.0.1",
+	"type": "module",
+	"author": "Ragnar Lothbrok <ragnarlothbrokjr@proton.me>",
+	"repository": "https://github.com/Valhalla-Development/PM2Pilot.git",
+	"bugs": {
+		"url": "https://github.com/Valhalla-Development/PM2Pilot/issues"
+	},
+	"description": "TODO",
+	"homepage": "https://github.com/Valhalla-Development/PM2Pilot#readme",
+	"license": "GPL-3.0-or-later",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "tsc --noEmit -p tsconfig.json && biome check --files-ignore-unknown=true --diagnostic-level=error --no-errors-on-unmatched src",
+		"lint:fix": "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true src",
+		"type-check": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@hono/node-server": "^1.14.3",
+		"hono": "^4.7.10",
+		"pm2": "^6.0.6"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@sveltejs/adapter-auto": "^6.0.1",
+		"@sveltejs/kit": "^2.21.1",
+		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"dotenv": "^16.5.0",
+		"svelte": "^5.33.8",
+		"svelte-check": "^4.2.1",
+		"typescript": "^5.8.3",
+		"ultracite": "^4.2.5",
+		"vite": "^6.3.5"
+	}
+}
