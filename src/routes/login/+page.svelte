@@ -48,11 +48,11 @@ onDestroy(() => {
 
   <!-- Login form container -->
   <div class="relative z-10 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="flex font-['Montserrat'] items-center justify-center w-full">
+    <div class="flex font-['Montserrat'] items-center justify-center w-full max-w-[400px] mx-auto">
       <div class="flex justify-center items-center w-full">
-        <div class="grid gap-8">
-          <div class="card card--glass m-4">
-            <div class="card__content xl:py-16 2xl:py-16 lg:py-16 md:py-16 sm:py-8 xl:px-10 2xl:px-10 lg:px-10 md:px-10 sm:px-4">
+        <div class="w-full">
+          <div class="card card--glass">
+            <div class="card__content p-6 sm:p-8 md:p-10">
               <form action="#" method="post" class="space-y-4">
                 <div>
                   <label for="email" class="mb-2 text-lg" style="color: var(--text-color);">Email</label>
@@ -84,9 +84,9 @@ onDestroy(() => {
                 </button>
               </form>
               <div class="flex flex-col mt-6 items-center justify-center text-sm">
-                <h3 style="color: var(--text-color);">
+                <h3 style="color: var(--text-color);" class="text-center">
                   Don't have an account?
-                  <a class="group transition-all duration-100 ease-in-out" href="#">
+                  <a class="group transition-all duration-100 ease-in-out ml-1" href="#">
                     <span class="bg-left-bottom bg-gradient-to-r bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
                       Sign Up
                     </span>
