@@ -1,35 +1,10 @@
 @import "tailwindcss";
 
-/* Theme variables */
-:root {
-  --bg-color: #ffffff;
-  --text-color: #333333;
-  --button-bg: #f0f0f0;
-  --button-hover: #e0e0e0;
-  --link-color: #105aca;  /* Light mode link color */
-}
-
-body.dark-theme {
-  --bg-color: #1a1a1a;
-  --text-color: #ffffff;
-  --button-bg: #333333;
-  --button-hover: #444444;
-  --link-color: #618af6;  /* Dark mode link color */
-}
-
-body.app {
-  margin: 0;
-  min-height: 100vh;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  overflow: hidden;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* Common link styles */
 a {
-  color: var(--link-color);
-  text-decoration: none;
+  @apply text-blue-600 dark:text-blue-400 no-underline;
 }
 
 a.group span {
