@@ -20,7 +20,7 @@ onMount(() => {
                 scaleMobile: 1.0,
                 color: 0x4275,
                 shininess: 34.0,
-                waveHeight: 26.0,
+                waveHeight: 34.0,
                 waveSpeed: 0.65,
                 zoom: 0.9,
             });
@@ -51,8 +51,8 @@ onDestroy(() => {
     <div class="flex font-['Montserrat'] items-center justify-center w-full">
       <div class="flex justify-center items-center w-full">
         <div class="grid gap-8">
-          <div id="back-div" class="bg-gradient-to-r from-blue-500/80 to-purple-500/80 backdrop-blur-sm rounded-[26px] m-4">
-            <div class="border-[20px] border-transparent rounded-[20px] shadow-lg xl:py-16 2xl:py-16 lg:py-16 md:py-16 sm:py-8 xl:px-10 2xl:px-10 lg:px-10 md:px-10 sm:px-4 m-2" style="background-color: var(--bg-color);">
+          <div class="card card--glass m-4">
+            <div class="card__content xl:py-16 2xl:py-16 lg:py-16 md:py-16 sm:py-8 xl:px-10 2xl:px-10 lg:px-10 md:px-10 sm:px-4">
               <form action="#" method="post" class="space-y-4">
                 <div>
                   <label for="email" class="mb-2 text-lg" style="color: var(--text-color);">Email</label>
@@ -76,13 +76,8 @@ onDestroy(() => {
                     required
                   />
                 </div>
-                <a class="group transition-all duration-100 ease-in-out mb-4 block" href="#">
-                  <span class="bg-left-bottom bg-gradient-to-r text-sm bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-                    Forget your password?
-                  </span>
-                </a>
                 <button
-                  class="shadow-lg p-2 rounded-lg w-full hover:scale-105 transition duration-300 ease-in-out bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 text-white"
+                  class="shadow-lg p-2 rounded-lg w-full hover:scale-105 transition duration-300 ease-in-out bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 text-white mt-6"
                   type="submit"
                 >
                   Sign in
@@ -114,3 +109,71 @@ onDestroy(() => {
     </div>
   </div>
 </div>
+
+<style>
+  :root {
+    --primary500: hsl(292, 71%, 60%);
+    --primary600: hsl(var(--hue-primary), 90%, 60%);
+    --white0: hsla(0, 0%, 100%, 0);
+    --white50: hsla(0, 0%, 100%, 0.25);
+    --white200: hsla(0, 0%, 100%, 0.4);
+    --white: hsl(217, 90%, 37%);
+  }
+
+  /* Make links and spans bold */
+  a.group span {
+    font-weight: 600;
+  }
+
+  .card {
+    --blur: 12px;
+    background-image: linear-gradient(90deg, var(--primary600), var(--primary500));
+    border-radius: 1em;
+    box-shadow: 0 0.25em 0.375em hsla(0, 0%, 0%, 0.1);
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    z-index: 1;
+  }
+
+  .card--glass {
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur));
+    background-image: linear-gradient(90deg, 
+      color-mix(in srgb, var(--bg-color) 40%, transparent),
+      color-mix(in srgb, var(--bg-color) 25%, transparent)
+    );
+    color: inherit;
+  }
+
+  .card--glass:before,
+  .card--glass:after {
+    border-radius: inherit;
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-width: 8px;
+  }
+
+  .card--glass:before {
+    border: 8px solid var(--white);
+    mask-image: linear-gradient(135deg, var(--white), var(--white0) 50%);
+  }
+
+  .card--glass:after {
+    border: 8px solid var(--primary500);
+    mask-image: linear-gradient(135deg, var(--white0) 50%, var(--white));
+  }
+
+  .card__content {
+    position: relative;
+    z-index: 1;
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+    background: none;
+  }
+</style>
