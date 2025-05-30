@@ -26,4 +26,4 @@ export interface VantaGlobal {
 
 export interface VantaWindow extends Window {
     VANTA: VantaGlobal;
-} 
+}
