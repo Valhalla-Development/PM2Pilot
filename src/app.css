@@ -6,6 +6,7 @@
   --text-color: #333333;
   --button-bg: #f0f0f0;
   --button-hover: #e0e0e0;
+  --link-color: #105aca;  /* Light mode link color */
 }
 
 body.dark-theme {
@@ -13,6 +14,7 @@ body.dark-theme {
   --text-color: #ffffff;
   --button-bg: #333333;
   --button-hover: #444444;
+  --link-color: #618af6;  /* Dark mode link color */
 }
 
 body.app {
@@ -26,7 +28,7 @@ body.app {
 
 /* Common link styles */
 a {
-  color: #3b82f6;
+  color: var(--link-color);
   text-decoration: none;
 }
 
