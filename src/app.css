@@ -7,57 +7,20 @@ a {
   @apply text-blue-600 dark:text-blue-400 no-underline;
 }
 
-a.group span {
-  background-image: linear-gradient(to right, #3b82f6, #3b82f6);
-  background-size: 0% 2px;
-  background-position: left bottom;
-  background-repeat: no-repeat;
-  transition: background-size 0.5s ease-out;
+/* Common text colors */
+.text-primary {
+  @apply text-gray-900 dark:text-gray-100;
 }
 
-a.group:hover span {
-  background-size: 100% 2px;
+/* Common input styling */
+.input-field {
+  @apply border p-3 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 rounded-lg w-full 
+         bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 
+         border-gray-300 dark:border-gray-600 
+         placeholder:text-gray-500 dark:placeholder:text-gray-400;
 }
 
-/* Theme toggle button */
-.theme-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  z-index: 1000;
-  background-color: transparent;
-}
-
-.theme-toggle:hover {
-  background-color: var(--button-hover);
-}
-
-.theme-toggle svg {
-  width: 100%;
-  height: 100%;
-}
-
-.theme-toggle .moon-icon {
-  display: block;
-  fill: #7c3aed;
-}
-
-.theme-toggle .sun-icon {
-  display: none;
-  fill: #eab308;
-}
-
-body.dark-theme .theme-toggle .moon-icon {
-  display: none;
-}
-
-body.dark-theme .theme-toggle .sun-icon {
-  display: block;
-}
+/* Common button with hover scale effect */
+.btn-scale {
+  @apply hover:scale-105 transition duration-300 ease-in-out;
+} 
