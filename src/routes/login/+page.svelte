@@ -39,7 +39,7 @@ onDestroy(() => {
   <title>Login</title>
 </svelte:head>
 
-<div class="relative min-h-screen">
+<div class="relative min-h-screen bg-blue-50 dark:bg-gray-900">
   <!-- Vanta.js container -->
   <div 
     bind:this={vantaContainer} 
