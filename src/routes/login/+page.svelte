@@ -55,37 +55,37 @@ onDestroy(() => {
             <div class="card__content p-6 sm:p-8 md:p-10">
               <form action="#" method="post" class="space-y-4">
                 <div>
-                  <label for="email" class="mb-2 text-lg text-gray-900 dark:text-gray-100">Email</label>
+                  <label for="email" class="mb-2 text-lg text-primary">Email</label>
                   <input
                     id="email"
-                    class="border p-3 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 rounded-lg w-full bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                    class="input-field"
                     type="email"
                     placeholder="Email"
                     required
                   />
                 </div>
                 <div>
-                  <label for="password" class="mb-2 text-lg text-gray-900 dark:text-gray-100">Password</label>
+                  <label for="password" class="mb-2 text-lg text-primary">Password</label>
                   <input
                     id="password"
-                    class="border p-3 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 rounded-lg w-full bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                    class="input-field"
                     type="password"
                     placeholder="Password"
                     required
                   />
                 </div>
                 <button
-                  class="shadow-lg p-2 rounded-lg w-full hover:scale-105 transition duration-300 ease-in-out bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 text-white mt-6"
+                  class="btn-scale shadow-lg p-2 rounded-lg w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 text-white mt-6"
                   type="submit"
                 >
                   Sign in
                 </button>
               </form>
               <div class="flex flex-col mt-6 items-center justify-center text-sm">
-                <h3 class="text-center text-gray-900 dark:text-gray-100">
+                <h3 class="text-center text-primary">
                   Don't have an account?
-                  <a class="group transition-all duration-100 ease-in-out ml-1" href="#">
-                    <span class="bg-left-bottom bg-gradient-to-r bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                  <a class="group transition-all duration-100 ease-in-out ml-1 font-semibold" href="#">
+                    <span class="bg-left-bottom bg-gradient-to-r from-blue-500 to-blue-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
                       Sign Up
                     </span>
                   </a>
@@ -116,11 +116,6 @@ onDestroy(() => {
     --white50: hsla(0, 0%, 100%, 0.25);
     --white200: hsla(0, 0%, 100%, 0.4);
     --white: hsl(217, 90%, 37%);
-  }
-
-  /* Make links and spans bold */
-  a.group span {
-    font-weight: 600;
   }
 
   .card {
