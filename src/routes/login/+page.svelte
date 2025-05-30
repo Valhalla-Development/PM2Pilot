@@ -55,22 +55,20 @@ onDestroy(() => {
             <div class="card__content p-6 sm:p-8 md:p-10">
               <form action="#" method="post" class="space-y-4">
                 <div>
-                  <label for="email" class="mb-2 text-lg" style="color: var(--text-color);">Email</label>
+                  <label for="email" class="mb-2 text-lg text-gray-900 dark:text-gray-100">Email</label>
                   <input
                     id="email"
-                    class="border p-3 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 rounded-lg w-full"
-                    style="background-color: var(--button-bg); color: var(--text-color); border-color: var(--button-hover);"
+                    class="border p-3 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 rounded-lg w-full bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 placeholder:text-gray-500 dark:placeholder:text-gray-400"
                     type="email"
                     placeholder="Email"
                     required
                   />
                 </div>
                 <div>
-                  <label for="password" class="mb-2 text-lg" style="color: var(--text-color);">Password</label>
+                  <label for="password" class="mb-2 text-lg text-gray-900 dark:text-gray-100">Password</label>
                   <input
                     id="password"
-                    class="border p-3 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 rounded-lg w-full"
-                    style="background-color: var(--button-bg); color: var(--text-color); border-color: var(--button-hover);"
+                    class="border p-3 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 rounded-lg w-full bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 placeholder:text-gray-500 dark:placeholder:text-gray-400"
                     type="password"
                     placeholder="Password"
                     required
@@ -84,7 +82,7 @@ onDestroy(() => {
                 </button>
               </form>
               <div class="flex flex-col mt-6 items-center justify-center text-sm">
-                <h3 style="color: var(--text-color);" class="text-center">
+                <h3 class="text-center text-gray-900 dark:text-gray-100">
                   Don't have an account?
                   <a class="group transition-all duration-100 ease-in-out ml-1" href="#">
                     <span class="bg-left-bottom bg-gradient-to-r bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
@@ -95,10 +93,10 @@ onDestroy(() => {
               </div>
               <!-- Third Party Authentication Options -->
               <div id="third-party-auth" class="flex items-center justify-center mt-5 flex-wrap">
-                <button type="button" aria-label="Sign in with Discord" class="w-10 h-10 flex items-center justify-center hover:scale-125 ease-in-out duration-300 shadow-lg rounded-lg m-1" style="background-color: var(--button-bg);">
+                <button type="button" aria-label="Sign in with Discord" class="w-10 h-10 flex items-center justify-center hover:scale-125 ease-in-out duration-300 shadow-lg rounded-lg m-1 bg-gray-100 dark:bg-gray-700">
                   <img src="https://www.svgrepo.com/show/353655/discord-icon.svg" alt="Discord" class="w-7.5 h-7.5" />
                 </button>
-                <button type="button" aria-label="Sign in with GitHub" class="w-10 h-10 flex items-center justify-center hover:scale-125 ease-in-out duration-300 shadow-lg rounded-lg m-1" style="background-color: var(--button-bg);">
+                <button type="button" aria-label="Sign in with GitHub" class="w-10 h-10 flex items-center justify-center hover:scale-125 ease-in-out duration-300 shadow-lg rounded-lg m-1 bg-gray-100 dark:bg-gray-700">
                   <img src="https://www.svgrepo.com/show/512317/github-142.svg" alt="GitHub" class="w-6 h-6" />
                 </button>
               </div>
@@ -141,10 +139,17 @@ onDestroy(() => {
     backdrop-filter: blur(var(--blur));
     -webkit-backdrop-filter: blur(var(--blur));
     background-image: linear-gradient(90deg, 
-      color-mix(in srgb, var(--bg-color) 40%, transparent),
-      color-mix(in srgb, var(--bg-color) 25%, transparent)
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.25)
     );
     color: inherit;
+  }
+
+  :global(.dark) .card--glass {
+    background-image: linear-gradient(90deg, 
+      rgba(26, 26, 26, 0.4),
+      rgba(26, 26, 26, 0.25)
+    );
   }
 
   .card--glass:before,
