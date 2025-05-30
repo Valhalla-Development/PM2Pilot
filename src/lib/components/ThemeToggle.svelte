@@ -16,15 +16,7 @@ function _toggleTheme() {
 }
 
 onMount(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    // Use saved theme, or fall back to system preference
-    isDarkTheme = savedTheme === 'dark' || (!savedTheme && prefersDark);
-
-    if (isDarkTheme) {
-        document.documentElement.classList.add('dark');
-    }
+    isDarkTheme = document.documentElement.classList.contains('dark');
 });
 </script>
 
