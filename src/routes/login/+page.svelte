@@ -1,6 +1,6 @@
 <script lang="ts">
 import Loader from '$lib/components/Loader.svelte';
-import type { VantaEffect } from '$lib/types/vanta';
+import type { VantaEffect, VantaGlobal } from '$lib/types/vanta';
 import { onDestroy, onMount } from 'svelte';
 
 let vantaEffect: VantaEffect | undefined;
@@ -45,7 +45,7 @@ function checkVantaReady(): Promise<void> {
 onMount(async () => {
     if (typeof window !== 'undefined') {
         await setTimeout(async () => {
-            const VANTA = (window as any).VANTA;
+            const VANTA = window.VANTA;
 
             if (VANTA) {
                 vantaEffect = VANTA.WAVES({
