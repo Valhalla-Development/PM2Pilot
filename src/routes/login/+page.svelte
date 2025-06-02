@@ -5,7 +5,7 @@ import { onDestroy, onMount } from 'svelte';
 
 let vantaEffect: VantaEffect | undefined;
 let vantaContainer: HTMLDivElement;
-let isLoading = true;
+let _isLoading = true;
 
 function checkVantaReady(): Promise<void> {
     return new Promise((resolve) => {
@@ -70,10 +70,10 @@ onMount(async () => {
                 console.warn('VANTA not available on window');
             }
 
-            isLoading = false;
+            _isLoading = false;
         }, 200);
     } else {
-        isLoading = false;
+        _isLoading = false;
     }
 });
 
@@ -96,7 +96,7 @@ onDestroy(() => {
   ></div>
 
   <!-- Loading state -->
-  {#if isLoading}
+  {#if _isLoading}
     <div class="relative z-10 h-full flex items-center justify-center">
       <Loader />
     </div>
