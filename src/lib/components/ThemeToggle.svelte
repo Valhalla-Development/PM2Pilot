@@ -2,7 +2,7 @@
 import { onMount } from 'svelte';
 
 let isDarkTheme = false;
-let mounted = false;
+let _mounted = false;
 
 function _toggleTheme() {
     isDarkTheme = !isDarkTheme;
@@ -18,11 +18,11 @@ function _toggleTheme() {
 
 onMount(() => {
     isDarkTheme = document.documentElement.classList.contains('dark');
-    mounted = true;
+    _mounted = true;
 });
 </script>
 
-{#if mounted}
+{#if _mounted}
 <button 
   class="fixed top-4 right-4 w-12 h-12 rounded-lg p-2 border border-gray-300 dark:border-gray-600 cursor-pointer transition-all duration-200 z-50 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 shadow-lg" 
   on:click={_toggleTheme}
