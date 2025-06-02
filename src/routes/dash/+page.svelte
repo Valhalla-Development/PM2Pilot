@@ -1,5 +1,6 @@
 <script lang="ts">
 import VantaBackground from '$lib/components/VantaBackground.svelte';
+import GlassCard from '$lib/components/GlassCard.svelte';
 
 const vantaConfig = {
     mouseControls: true,
@@ -26,6 +27,12 @@ const vantaConfig = {
   {vantaConfig}
 >
   <div class="h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <h1 class="text-4xl font-bold text-center text-white mb-8">Dashboard</h1>
+    <div class="flex items-center justify-center w-full max-w-[800px] mx-auto">
+      <div class="w-full">
+        <GlassCard maxWidth="800px">
+          <p class="text-center text-2xl font-bold text-white">Placeholder</p>
+        </GlassCard>
+      </div>
+    </div>
   </div>
 </VantaBackground> 
