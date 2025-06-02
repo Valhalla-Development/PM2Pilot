@@ -1,5 +1,6 @@
 <script lang="ts">
 import VantaBackground from '$lib/components/VantaBackground.svelte';
+import GlassCard from '$lib/components/GlassCard.svelte';
 
 const vantaConfig = {
     mouseControls: true,
@@ -29,138 +30,55 @@ const vantaConfig = {
     <div class="flex font-['Montserrat'] items-center justify-center w-full max-w-[400px] mx-auto">
       <div class="flex justify-center items-center w-full">
         <div class="w-full">
-          <div class="card card--glass">
-            <div class="card__content p-6 sm:p-8 md:p-10">
-              <form action="#" method="post" class="space-y-4">
-                <div>
-                  <input
-                    id="email"
-                    class="input-field"
-                    type="email"
-                    placeholder="Email"
-                    required
-                  />
-                </div>
-                <div>
-                  <input
-                    id="password"
-                    class="input-field"
-                    type="password"
-                    placeholder="Password"
-                    required
-                  />
-                </div>
-                <button
-                  class="btn-scale shadow-lg p-2 rounded-lg w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 text-white mt-6"
-                  type="submit"
-                >
-                  Sign in
-                </button>
-              </form>
-              <div class="flex flex-col mt-6 items-center justify-center text-sm">
-                <h3 class="text-center text-primary">
-                  Don't have an account?
-                  <a class="group transition-all duration-100 ease-in-out ml-1 font-semibold" href="#">
-                    <span class="bg-left-bottom bg-gradient-to-r from-blue-500 to-blue-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-                      Sign Up
-                    </span>
-                  </a>
-                </h3>
+          <GlassCard maxWidth="500px">
+            <form action="#" method="post" class="space-y-4">
+              <div>
+                <input
+                  id="email"
+                  class="input-field"
+                  type="email"
+                  placeholder="Email"
+                  required
+                />
               </div>
-              <!-- Third Party Authentication Options -->
-              <div id="third-party-auth" class="flex items-center justify-center mt-5 flex-wrap">
-                <button type="button" aria-label="Sign in with Discord" class="w-10 h-10 flex items-center justify-center hover:scale-125 ease-in-out duration-300 shadow-lg rounded-lg m-1 bg-gray-100 dark:bg-gray-700">
-                  <img src="https://www.svgrepo.com/show/353655/discord-icon.svg" alt="Discord" class="w-7.5 h-7.5" />
-                </button>
-                <button type="button" aria-label="Sign in with GitHub" class="w-10 h-10 flex items-center justify-center hover:scale-125 ease-in-out duration-300 shadow-lg rounded-lg m-1 bg-gray-100 dark:bg-gray-700">
-                  <img src="https://www.svgrepo.com/show/512317/github-142.svg" alt="GitHub" class="w-6 h-6" />
-                </button>
+              <div>
+                <input
+                  id="password"
+                  class="input-field"
+                  type="password"
+                  placeholder="Password"
+                  required
+                />
               </div>
+              <button
+                class="btn-scale shadow-lg p-2 rounded-lg w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 text-white mt-6"
+                type="submit"
+              >
+                Sign in
+              </button>
+            </form>
+            <div class="flex flex-col mt-6 items-center justify-center text-sm">
+              <h3 class="text-center text-primary">
+                Don't have an account?
+                <a class="group transition-all duration-100 ease-in-out ml-1 font-semibold" href="#">
+                  <span class="bg-left-bottom bg-gradient-to-r from-blue-500 to-blue-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                    Sign Up
+                  </span>
+                </a>
+              </h3>
             </div>
-          </div>
+            <!-- Third Party Authentication Options -->
+            <div id="third-party-auth" class="flex items-center justify-center mt-5 flex-wrap">
+              <button type="button" aria-label="Sign in with Discord" class="w-10 h-10 flex items-center justify-center hover:scale-125 ease-in-out duration-300 shadow-lg rounded-lg m-1 bg-gray-100 dark:bg-gray-700">
+                <img src="https://www.svgrepo.com/show/353655/discord-icon.svg" alt="Discord" class="w-7.5 h-7.5" />
+              </button>
+              <button type="button" aria-label="Sign in with GitHub" class="w-10 h-10 flex items-center justify-center hover:scale-125 ease-in-out duration-300 shadow-lg rounded-lg m-1 bg-gray-100 dark:bg-gray-700">
+                <img src="https://www.svgrepo.com/show/512317/github-142.svg" alt="GitHub" class="w-6 h-6" />
+              </button>
+            </div>
+          </GlassCard>
         </div>
       </div>
     </div>
   </div>
 </VantaBackground>
-
-<style>
-  :root {
-    --primary500: hsl(292, 71%, 60%);
-    --primary600: hsl(var(--hue-primary), 90%, 60%);
-    --white0: hsla(0, 0%, 100%, 0);
-    --white50: hsla(0, 0%, 100%, 0.25);
-    --white200: hsla(0, 0%, 100%, 0.4);
-    --white: hsl(217, 90%, 37%);
-  }
-
-  .card {
-    --blur: 12px;
-    background-image: linear-gradient(90deg, var(--primary600), var(--primary500));
-    border-radius: 1em;
-    box-shadow: 0 0.25em 0.375em hsla(0, 0%, 0%, 0.1);
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    z-index: 1;
-  }
-
-  .card--glass {
-    backdrop-filter: blur(var(--blur));
-    -webkit-backdrop-filter: blur(var(--blur));
-    background-image: linear-gradient(90deg, 
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.25)
-    );
-    color: inherit;
-  }
-
-  :global(.dark) .card--glass {
-    background-image: linear-gradient(90deg, 
-      rgba(26, 26, 26, 0.4),
-      rgba(26, 26, 26, 0.25)
-    );
-  }
-
-  .card--glass:before,
-  .card--glass:after {
-    border-radius: inherit;
-    content: "";
-    display: block;
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    border-width: 8px;
-  }
-
-  .card--glass:before {
-    border: 8px solid var(--white);
-    mask-image: linear-gradient(135deg, var(--white), var(--white0) 50%);
-  }
-
-  .card--glass:after {
-    border: 8px solid var(--primary500);
-    mask-image: linear-gradient(135deg, var(--white0) 50%, var(--white));
-  }
-
-  .card__content {
-    position: relative;
-    z-index: 1;
-    border-radius: inherit;
-    width: 100%;
-    height: 100%;
-    background: none;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>
