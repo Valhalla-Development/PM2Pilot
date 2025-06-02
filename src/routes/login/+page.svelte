@@ -1,7 +1,7 @@
 <script lang="ts">
+import Loader from '$lib/components/Loader.svelte';
 import type { VantaEffect } from '$lib/types/vanta';
 import { onDestroy, onMount } from 'svelte';
-import Loader from '$lib/components/Loader.svelte';
 
 let vantaEffect: VantaEffect | undefined;
 let vantaContainer: HTMLDivElement;
@@ -11,22 +11,22 @@ function checkVantaReady(): Promise<void> {
     return new Promise((resolve) => {
         let attempts = 0;
         const maxAttempts = 60;
-        
+
         const check = () => {
             attempts++;
-            
+
             // More comprehensive checks for Vanta readiness
             const canvas = vantaContainer?.querySelector('canvas');
             const hasValidCanvas = canvas && canvas.width > 0 && canvas.height > 0;
-            
+
             // Check if Vanta effect has essential properties initialized
             const hasScene = vantaEffect?.scene;
             const hasCamera = vantaEffect?.camera;
             const hasRenderer = vantaEffect?.renderer;
-            
+
             // Ensure the animation loop has started
             const hasAnimationLoop = vantaEffect?.req;
-            
+
             if (hasValidCanvas && hasScene && hasCamera && hasRenderer && hasAnimationLoop) {
                 // Give it one more frame to ensure first render is complete
                 requestAnimationFrame(() => resolve());
@@ -37,7 +37,7 @@ function checkVantaReady(): Promise<void> {
                 resolve();
             }
         };
-        
+
         requestAnimationFrame(check);
     });
 }
@@ -46,7 +46,7 @@ onMount(async () => {
     if (typeof window !== 'undefined') {
         setTimeout(async () => {
             const VANTA = (window as any).VANTA;
-            
+
             if (VANTA) {
                 vantaEffect = VANTA.WAVES({
                     el: vantaContainer,
@@ -63,13 +63,13 @@ onMount(async () => {
                     waveSpeed: 0.65,
                     zoom: 0.9,
                 });
-                
+
                 // Wait for Vanta to be ready
                 await checkVantaReady();
             } else {
                 console.warn('VANTA not available on window');
             }
-            
+
             isLoading = false;
         }, 200);
     } else {
