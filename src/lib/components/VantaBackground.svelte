@@ -93,21 +93,21 @@ onDestroy(() => {
 });
 </script>
 
-<div class="relative h-screen max-h-[100dvh] overflow-hidden bg-blue-50 dark:bg-gray-900">
+<div class="relative min-h-screen overflow-auto bg-blue-50 dark:bg-gray-900">
   <!-- Vanta.js container -->
   <div 
     bind:this={vantaContainer} 
-    class="absolute inset-0 z-0"
+    class="fixed inset-0 z-0"
   ></div>
 
   <!-- Loading state -->
   {#if _isLoading && showLoader}
-    <div class="relative z-10 h-full flex items-center justify-center">
+    <div class="relative z-10 h-screen flex items-center justify-center">
       <Loader />
     </div>
   {:else}
     <!-- Content slot -->
-    <div class="relative z-10 h-full">
+    <div class="relative z-10 min-h-screen">
       <slot {vantaEffect} isLoaded={!_isLoading} />
     </div>
   {/if}
