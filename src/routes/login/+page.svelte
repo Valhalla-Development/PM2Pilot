@@ -26,7 +26,7 @@ const vantaConfig = {
   vantaType="WAVES" 
   {vantaConfig}
 >
-  <div class="h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="flex font-['Montserrat'] items-center justify-center w-full max-w-[400px] mx-auto">
       <div class="flex justify-center items-center w-full">
         <div class="w-full">
