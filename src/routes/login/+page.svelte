@@ -88,7 +88,7 @@ onDestroy(() => {
   <title>Login</title>
 </svelte:head>
 
-<div class="relative min-h-screen bg-blue-50 dark:bg-gray-900">
+<div class="relative h-screen max-h-[100dvh] bg-blue-50 dark:bg-gray-900 overflow-hidden">
   <!-- Vanta.js container -->
   <div 
     bind:this={vantaContainer} 
@@ -97,12 +97,12 @@ onDestroy(() => {
 
   <!-- Loading state -->
   {#if isLoading}
-    <div class="relative z-10 min-h-screen flex items-center justify-center">
+    <div class="relative z-10 h-full flex items-center justify-center">
       <Loader />
     </div>
   {:else}
     <!-- Login form container -->
-    <div class="relative z-10 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="relative z-10 h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div class="flex font-['Montserrat'] items-center justify-center w-full max-w-[400px] mx-auto">
         <div class="flex justify-center items-center w-full">
           <div class="w-full">
