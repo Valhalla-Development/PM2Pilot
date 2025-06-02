@@ -12,9 +12,8 @@
 	"license": "GPL-3.0-or-later",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "svelte-kit sync && vite build",
 		"preview": "vite preview",
-		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "tsc --noEmit -p tsconfig.json && biome check --files-ignore-unknown=true --diagnostic-level=error --no-errors-on-unmatched src",
@@ -22,22 +21,17 @@
 		"type-check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"dotenv": "^16.5.0",
 		"hono": "^4.7.11",
 		"pm2": "^6.0.6",
 		"zod": "^3.25.48"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
-		"@hono/node-server": "^1.14.3",
-		"@hono/zod-validator": "^0.7.0",
 		"@sveltejs/adapter-auto": "^6.0.1",
 		"@sveltejs/kit": "^2.21.1",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"@tailwindcss/vite": "^4.1.8",
 		"@types/node": "^22.15.29",
-		"autoprefixer": "^10.4.21",
-		"postcss": "^8.5.4",
 		"svelte": "^5.33.13",
 		"svelte-check": "^4.2.1",
 		"tailwindcss": "^4.1.8",
