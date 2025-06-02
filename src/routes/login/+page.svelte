@@ -1,6 +1,6 @@
 <script lang="ts">
-import VantaBackground from '$lib/components/VantaBackground.svelte';
 import GlassCard from '$lib/components/GlassCard.svelte';
+import VantaBackground from '$lib/components/VantaBackground.svelte';
 
 const vantaConfig = {
     mouseControls: true,
