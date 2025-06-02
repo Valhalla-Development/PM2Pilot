@@ -44,7 +44,7 @@ function checkVantaReady(): Promise<void> {
 
 onMount(async () => {
     if (typeof window !== 'undefined') {
-        setTimeout(async () => {
+        await setTimeout(async () => {
             const VANTA = (window as any).VANTA;
 
             if (VANTA) {
