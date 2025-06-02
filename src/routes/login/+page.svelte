@@ -55,7 +55,6 @@ onDestroy(() => {
             <div class="card__content p-6 sm:p-8 md:p-10">
               <form action="#" method="post" class="space-y-4">
                 <div>
-                  <label for="email" class="mb-2 text-lg text-primary">Email</label>
                   <input
                     id="email"
                     class="input-field"
@@ -65,7 +64,6 @@ onDestroy(() => {
                   />
                 </div>
                 <div>
-                  <label for="password" class="mb-2 text-lg text-primary">Password</label>
                   <input
                     id="password"
                     class="input-field"
