@@ -23,4 +23,4 @@ a {
 /* Common button with hover scale effect */
 .btn-scale {
   @apply hover:scale-105 transition duration-300 ease-in-out;
-} 
+}
