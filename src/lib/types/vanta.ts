@@ -16,6 +16,10 @@ export interface VantaConfig {
 
 export interface VantaEffect {
     destroy: () => void;
+    scene?: unknown;
+    camera?: unknown;
+    renderer?: unknown;
+    req?: number;
 }
 
 export type VantaWaves = (config: VantaConfig) => VantaEffect;
