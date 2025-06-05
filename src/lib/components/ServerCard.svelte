@@ -107,7 +107,8 @@ $: memoryPercent = Math.min((memoryBytes / totalSystemMemoryBytes) * 100, 100);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 0.7em 1.25em 0.5em 1.5em;
+    padding: 0.7em 1.25em 2em 1.25em;
+    text-align: center;
 }
 
 .card-body h3 {
