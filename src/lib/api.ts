@@ -2,12 +2,44 @@ import { Hono } from 'hono';
 import { logger } from 'hono/logger';
 import { PM2Service } from './server/pm2';
 import { pm2Client } from './server/pm2Client';
+import * as os from 'node:os';
 
 // Create Hono app
 const app = new Hono();
 
 // Middleware
 app.use('*', logger());
+
+// System info route
+app.get('/system', (c) => {
+    try {
+        const totalMemory = os.totalmem();
+        const freeMemory = os.freemem();
+        const cpus = os.cpus();
+        
+        return c.json({
+            success: true,
+            system: {
+                totalMemoryBytes: totalMemory,
+                freeMemoryBytes: freeMemory,
+                usedMemoryBytes: totalMemory - freeMemory,
+                cpuCount: cpus.length,
+                platform: os.platform(),
+                arch: os.arch(),
+                uptime: os.uptime()
+            }
+        });
+    } catch (error) {
+        return c.json(
+            {
+                success: false,
+                error: 'Failed to get system info',
+                details: error instanceof Error ? error.message : undefined,
+            },
+            500
+        );
+    }
+});
 
 // PM2 routes
 app.get('/list', async (c) => {
