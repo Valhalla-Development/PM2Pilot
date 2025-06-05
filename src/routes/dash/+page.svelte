@@ -3,6 +3,7 @@ import GlassCard from '$lib/components/GlassCard.svelte';
 import ServerCard from '$lib/components/ServerCard.svelte';
 import VantaBackground from '$lib/components/VantaBackground.svelte';
 import { onMount } from 'svelte';
+import { dev } from '$app/environment';
 
 const vantaConfig = {
     mouseControls: true,
@@ -21,7 +22,7 @@ const vantaConfig = {
 
 let processes: Array<{
     name: string;
-    status: 'online' | 'stopped' | 'errored' | 'stopping';
+    status: 'online' | 'stopping' | 'stopped' | 'launching' | 'errored';
     cpu: number;
     memory: string;
     memoryBytes: number;
@@ -105,13 +106,15 @@ async function fetchProcesses() {
 
         if (data.success) {
             processes = data.processes.map((proc: PM2Process) => {
-                let status: 'online' | 'stopped' | 'errored' | 'stopping';
+                let status: 'online' | 'stopping' | 'stopped' | 'launching' | 'errored';
                 if (proc.status === 'online') {
                     status = 'online';
-                } else if (proc.status === 'errored') {
-                    status = 'errored';
                 } else if (proc.status === 'stopping') {
                     status = 'stopping';
+                } else if (proc.status === 'launching') {
+                    status = 'launching';
+                } else if (proc.status === 'errored') {
+                    status = 'errored';
                 } else {
                     status = 'stopped';
                 }
@@ -139,6 +142,65 @@ async function fetchProcesses() {
 }
 
 onMount(() => {
+    // Use mock data in development
+    if (dev) {
+        totalSystemMemoryBytes = 16 * 1024 * 1024 * 1024; // 16GB
+        processes = [
+            {
+                name: 'api-server',
+                status: 'online',
+                cpu: 45.2,
+                memory: '512 MB',
+                memoryBytes: 512 * 1024 * 1024,
+                restarts: 3,
+                uptime: '2d 4h 32m',
+                pid: 1234
+            },
+            {
+                name: 'web-app',
+                status: 'stopped',
+                cpu: 0,
+                memory: '0 MB',
+                memoryBytes: 0,
+                restarts: 12,
+                uptime: '0s',
+                pid: null
+            },
+            {
+                name: 'worker-queue',
+                status: 'errored',
+                cpu: 15.8,
+                memory: '256 MB',
+                memoryBytes: 256 * 1024 * 1024,
+                restarts: 8,
+                uptime: '45m 12s',
+                pid: 5678
+            },
+            {
+                name: 'background-task',
+                status: 'launching',
+                cpu: 8.5,
+                memory: '128 MB',
+                memoryBytes: 128 * 1024 * 1024,
+                restarts: 2,
+                uptime: '1h 15m',
+                pid: 9012
+            },
+            {
+                name: 'cache-service',
+                status: 'stopping',
+                cpu: 3.2,
+                memory: '64 MB',
+                memoryBytes: 64 * 1024 * 1024,
+                restarts: 5,
+                uptime: '30m 45s',
+                pid: 3456
+            }
+        ];
+        loading = false;
+        return;
+    }
+
     fetchSystemInfo().then(() => {
         fetchProcesses();
     });

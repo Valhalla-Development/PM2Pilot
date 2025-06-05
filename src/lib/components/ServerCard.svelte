@@ -1,6 +1,6 @@
 <script lang="ts">
 export let name = 'Unknown';
-export let status: 'online' | 'stopped' | 'errored' | 'stopping' = 'stopped';
+export let status: 'online' | 'stopping' | 'stopped' | 'launching' | 'errored' = 'stopped';
 export let cpu = 0;
 export let memory = '0 MB';
 export let memoryBytes = 0;
@@ -9,9 +9,10 @@ export let uptime = '0s';
 // Map status to color schemes
 const statusConfig = {
     online: 'green',
-    stopped: 'red',
-    errored: 'red',
     stopping: 'orange',
+    stopped: 'red',
+    launching: 'orange',
+    errored: 'red',
 };
 
 $: statusClass = statusConfig[status];
