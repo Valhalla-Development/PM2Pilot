@@ -168,7 +168,7 @@ $: memoryPercent = Math.min((memoryBytes / totalSystemMemoryBytes) * 100, 100);
     width: 100%;
     border-top: 0.063rem solid #292929;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 0.7em 1.25em 0.7em 1.25em;
     border-bottom-left-radius: 2.25rem;
