@@ -106,18 +106,9 @@ async function fetchProcesses() {
 
         if (data.success) {
             processes = data.processes.map((proc: PM2Process) => {
-                let status: 'online' | 'stopping' | 'stopped' | 'launching' | 'errored';
-                if (proc.status === 'online') {
-                    status = 'online';
-                } else if (proc.status === 'stopping') {
-                    status = 'stopping';
-                } else if (proc.status === 'launching') {
-                    status = 'launching';
-                } else if (proc.status === 'errored') {
-                    status = 'errored';
-                } else {
-                    status = 'stopped';
-                }
+                const status = (['online', 'stopping', 'launching', 'errored'].includes(proc.status) 
+                    ? proc.status 
+                    : 'stopped') as 'online' | 'stopping' | 'stopped' | 'launching' | 'errored';
 
                 return {
                     name: proc.name,
