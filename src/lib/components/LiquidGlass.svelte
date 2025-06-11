@@ -107,6 +107,10 @@ export let style = '';
     border-radius: 1.5rem;
   }
 
+  :global(.dark) .liquidGlass-tint {
+    background: rgba(26, 26, 26, 0.25);
+  }
+
   .liquidGlass-shine {
     position: absolute;
     inset: 0;
@@ -115,6 +119,11 @@ export let style = '';
     border-radius: 1.5rem;
     box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
       inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
+  }
+
+  :global(.dark) .liquidGlass-shine {
+    box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.2),
+      inset -1px -1px 1px 1px rgba(255, 255, 255, 0.2);
   }
 
   .liquidGlass-text {
