@@ -1,8 +1,8 @@
+import * as os from 'node:os';
 import { Hono } from 'hono';
 import { logger } from 'hono/logger';
 import { PM2Service } from './server/pm2';
 import { pm2Client } from './server/pm2Client';
-import * as os from 'node:os';
 
 // Create Hono app
 const app = new Hono();
@@ -16,7 +16,7 @@ app.get('/system', (c) => {
         const totalMemory = os.totalmem();
         const freeMemory = os.freemem();
         const cpus = os.cpus();
-        
+
         return c.json({
             success: true,
             system: {
@@ -26,8 +26,8 @@ app.get('/system', (c) => {
                 cpuCount: cpus.length,
                 platform: os.platform(),
                 arch: os.arch(),
-                uptime: os.uptime()
-            }
+                uptime: os.uptime(),
+            },
         });
     } catch (error) {
         return c.json(
