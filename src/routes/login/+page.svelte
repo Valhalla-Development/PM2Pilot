@@ -50,12 +50,34 @@ const vantaConfig = {
                   required
                 />
               </div>
-              <button
-                class="btn-scale shadow-lg p-2 rounded-lg w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 text-white mt-6"
-                type="submit"
-              >
-                Sign in
-              </button>
+              <div class="relative inline-flex items-center justify-center w-full mt-6">
+                <div
+                  class="absolute inset-0 duration-1000 opacity-60 transition-all bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 rounded-xl blur-lg filter group-hover:opacity-100 group-hover:duration-200"
+                ></div>
+                <button
+                  type="submit"
+                  class="group relative inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 px-8 py-2.5 text-white transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-blue-500/30 w-full text-base"
+                >
+                  Sign in
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 10 10"
+                    height="12"
+                    width="12"
+                    fill="none"
+                    class="mt-0.5 ml-2 -mr-1 stroke-white stroke-2"
+                  >
+                    <path
+                      d="M0 5h7"
+                      class="transition opacity-0 group-hover:opacity-100"
+                    ></path>
+                    <path
+                      d="M1 1l4 4-4 4"
+                      class="transition group-hover:translate-x-[3px]"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
             </form>
             <div class="flex flex-col mt-6 items-center justify-center text-sm">
               <h3 class="text-center text-primary font-medium">
