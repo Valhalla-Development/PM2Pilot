@@ -1,5 +1,5 @@
 <script lang="ts">
-import GlassCard from '$lib/components/GlassCard.svelte';
+import LiquidGlass from '$lib/components/LiquidGlass.svelte';
 import VantaBackground from '$lib/components/VantaBackground.svelte';
 
 const vantaConfig = {
@@ -30,7 +30,7 @@ const vantaConfig = {
     <div class="flex font-['Montserrat'] items-center justify-center w-full max-w-[400px] mx-auto">
       <div class="flex justify-center items-center w-full">
         <div class="w-full">
-          <GlassCard maxWidth="500px">
+          <LiquidGlass style="max-width: 500px; width: 100%; flex-direction: column;">
             <form action="#" method="post" class="space-y-4">
               <div>
                 <input
@@ -58,7 +58,7 @@ const vantaConfig = {
               </button>
             </form>
             <div class="flex flex-col mt-6 items-center justify-center text-sm">
-              <h3 class="text-center text-primary">
+              <h3 class="text-center text-primary font-medium">
                 Don't have an account?
                 <a class="group transition-all duration-100 ease-in-out ml-1 font-semibold" href="#">
                   <span class="bg-left-bottom bg-gradient-to-r from-blue-500 to-blue-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
@@ -76,7 +76,7 @@ const vantaConfig = {
                 <img src="https://www.svgrepo.com/show/512317/github-142.svg" alt="GitHub" class="w-6 h-6" />
               </button>
             </div>
-          </GlassCard>
+          </LiquidGlass>
         </div>
       </div>
     </div>
